@@ -2,8 +2,8 @@ import express, { Application } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
-import connect from "./util/connect";
-import userRouter from "./routes/user.router";
+import connect from "./src/util/connect";
+import userRouter from "./src/routes/user.router";
 
 dotenv.config();
 const app: Application = express();
