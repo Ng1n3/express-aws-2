@@ -1,7 +1,6 @@
 import { createUser, getUsers } from "../service/user.service";
 import { Response, Request } from "express";
-import { signUpUserSchema } from "../model/user.model";
-import { SignUpUserSchema } from "../schema/user.schema";
+import { SignUpUserInput } from "../schema/user.schema";
 
 export const getUsersController = async (req: Request, res: Response) => {
   try {
@@ -16,7 +15,7 @@ export const getUsersController = async (req: Request, res: Response) => {
 };
 
 export const createUserController = async (
-  req: Request<{}, {}, SignUpUserSchema["body"]>,
+  req: Request<{}, {}, SignUpUserInput["body"]>,
   res: Response
 ) => {
   try {
@@ -26,6 +25,6 @@ export const createUserController = async (
       newUser,
     });
   } catch (error: any) {
-    throw new Error(error.message);
+    res.status(400).send({ error: error.message });
   }
 };
